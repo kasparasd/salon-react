@@ -1,7 +1,7 @@
 import Checkbox from "@/Components/Checkbox";
 import { DeleteButton } from "@/Components/buttons/DeleteButton";
 import { SubmitButton } from "@/Components/buttons/SubmitButton";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
 import { Head, useForm } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
@@ -38,7 +38,7 @@ export default function AddPermission({
   };
 
   return (
-    <AuthenticatedLayout
+    <AdminPanelLayout
       user={auth.user}
       header={
         <div className="flex justify-between items-center">
@@ -94,6 +94,6 @@ export default function AddPermission({
           </div>
         </div>
       </div>
-    </AuthenticatedLayout>
+    </AdminPanelLayout>
   );
 }

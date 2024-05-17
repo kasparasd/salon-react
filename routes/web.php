@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -27,7 +28,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/{role}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole'])->name('roles.givePermissionToRole');
     });
     Route::resource('user', UserController::class);
+
+
 });
+Route::prefix("procedures")->name('procedures.')->group(function () {
+    Route::get('/', [ProcedureController::class, 'index'])->name('index');
+    Route::get('/create', [ProcedureController::class, 'create'])->name('create');
+    Route::post('/', [ProcedureController::class, 'store'])->name('store');
+    Route::get('/{procedure}/edit', [ProcedureController::class, 'edit'])->name('edit');
+    Route::put('/{procedure}', [ProcedureController::class, 'update'])->name('update');
+    Route::delete('/{procedure}', [ProcedureController::class, 'destroy'])->name('destroy');
+    Route::get('/{procedure}/delete', [ProcedureController::class, 'delete'])->name('delete');
+    Route::get('/{procedure}/add-employees', [ProcedureController::class, 'addEmployees'])->name('add-employees');
+    Route::post('/{procedure}/employeeToProcedure', [ProcedureController::class, 'employeeToProcedure'])->name('employee-to-procedure');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

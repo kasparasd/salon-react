@@ -1,34 +1,24 @@
-import { AddButton } from "@/Components/buttons/AddButton";
-import { AddButtonBig } from "@/Components/buttons/AddButtonBig";
-import { DeleteButton } from "@/Components/buttons/DeleteButton";
-import { EditButton } from "@/Components/buttons/EditButton";
+import { Head } from "@inertiajs/react";
+import AdminLinks from "@/Components/AdminLinks";
 import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, router } from "@inertiajs/react";
+import { AddButtonBig } from "@/Components/buttons/AddButtonBig";
 
-export default function Index({ auth, roles, ok }) {
-  const deleteRole = (roleId) => {
-    if (!window.confirm("Are you sure you want to delete this role?")) {
-      return;
-    }
-    router.delete(route("roles.destroy", roleId));
-  };
+export default function Users({ auth, mustVerifyEmail, status, ok }) {
+ return (
+  <AdminPanelLayout
+   user={auth.user}
+   header={
+    <div className="flex justify-between items-center">
+     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+      Vartotojai
+     </h2>
+     <AddButtonBig href={route("user.index")} text="Add new" />
+    </div>
+   }
+  >
+   <Head title="Profile" />
 
-  return (
-    <AdminPanelLayout
-      user={auth.user}
-      header={
-        <div className="flex justify-between items-center">
-          <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Roles
-          </h2>
-          <AddButtonBig href={route("roles.create")} text="Add new" />
-        </div>
-      }
-    >
-      <Head title="Roles" />
-
-      <div className="py-12">
+   <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           {ok && (
             <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
@@ -53,7 +43,7 @@ export default function Index({ auth, roles, ok }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {roles.data.map((role) => (
+                    {/* {roles.data.map((role) => (
                       <tr key={role.id}>
                         <td className="px-4 py-2 border border-gray-300">
                           {role.id}
@@ -78,7 +68,7 @@ export default function Index({ auth, roles, ok }) {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    ))} */}
                   </tbody>
                 </table>
               </div>
@@ -86,6 +76,7 @@ export default function Index({ auth, roles, ok }) {
           </div>
         </div>
       </div>
-    </AdminPanelLayout>
-  );
+   
+  </AdminPanelLayout>
+ );
 }

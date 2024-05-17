@@ -3,7 +3,7 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import { DeleteButton } from "@/Components/buttons/DeleteButton";
 import { SubmitButton } from "@/Components/buttons/SubmitButton";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
 import { Head, useForm } from "@inertiajs/react";
 
 export default function Edit({ auth, role }) {
@@ -17,7 +17,7 @@ export default function Edit({ auth, role }) {
   };
 
   return (
-    <AuthenticatedLayout
+    <AdminPanelLayout
       user={auth.user}
       header={
         <div className="flex justify-between items-center">
@@ -57,6 +57,6 @@ export default function Edit({ auth, role }) {
           </div>
         </div>
       </div>
-    </AuthenticatedLayout>
+    </AdminPanelLayout>
   );
 }
