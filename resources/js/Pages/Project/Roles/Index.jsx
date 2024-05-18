@@ -3,7 +3,6 @@ import { AddButtonBig } from "@/Components/buttons/AddButtonBig";
 import { DeleteButton } from "@/Components/buttons/DeleteButton";
 import { EditButton } from "@/Components/buttons/EditButton";
 import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, router } from "@inertiajs/react";
 
 export default function Index({ auth, roles, ok }) {
@@ -18,7 +17,7 @@ export default function Index({ auth, roles, ok }) {
     <AdminPanelLayout
       user={auth.user}
       header={
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-wrap">
           <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Roles
           </h2>
@@ -35,15 +34,12 @@ export default function Index({ auth, roles, ok }) {
               {ok}
             </div>
           )}
-          <div className=" dark:bg-gray-800 overflow-hidden sm:rounded-lg">
-            <div className="p-6 text-gray-900 dark:text-gray-100">
+          <div className="dark:bg-gray-800 overflow-hidden sm:rounded-lg">
+            <div className="p-1 text-gray-900 dark:text-gray-100">
               <div className="overflow-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
-                    <tr className="text-nowrap">
-                      <th className="px-4 py-2 bg-gray-200 border border-gray-300">
-                        Id
-                      </th>
+                    <tr>
                       <th className="px-4 py-2 bg-gray-200 border border-gray-300">
                         Name
                       </th>
@@ -56,12 +52,9 @@ export default function Index({ auth, roles, ok }) {
                     {roles.data.map((role) => (
                       <tr key={role.id}>
                         <td className="px-4 py-2 border border-gray-300">
-                          {role.id}
-                        </td>
-                        <td className="px-4 py-2 border border-gray-300">
                           {role.name}
                         </td>
-                        <td className="px-4 py-2 border border-gray-300 flex gap-4 ">
+                        <td className="px-4 py-2 border border-gray-300 flex flex-wrap gap-2 lg:gap-4">
                           <AddButton
                             href={route("roles.addPermissionToRole", role.id)}
                             text="Add/Edit Role Permission"
@@ -71,7 +64,7 @@ export default function Index({ auth, roles, ok }) {
                             text="Edit"
                           />
                           <button
-                            onClick={(e) => deleteRole(role.id)}
+                            onClick={() => deleteRole(role.id)}
                             className="bg-rose-600 py-1 px-3 text-white rounded shadow transition-all hover:bg-rose-700"
                           >
                             Trinti

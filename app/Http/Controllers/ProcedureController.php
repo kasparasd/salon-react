@@ -29,8 +29,9 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-        $durations = Procedure::$durations;
-        return view("procedures.create", [
+        $durations = (array) Procedure::$durations;
+        // dd($durations); 
+        return inertia("Project/Procedures/Create", [
             'durations' => $durations
         ]);
     }
@@ -40,8 +41,9 @@ class ProcedureController extends Controller
      */
     public function store(StoreProcedureRequest $request)
     {
+        // dd($request->all());
         Procedure::create($request->all());
-        return redirect()->route("procedures-index")->with("info", "Nauja procedūra sukurta");
+        return to_route("procedures.index")->with("info", "Nauja procedūra sukurta");
     }
 
     /**
@@ -57,8 +59,10 @@ class ProcedureController extends Controller
      */
     public function edit(Procedure $procedure)
     {
-        return view("procedures.edit", [
-            'procedure' => $procedure
+        $durations = (array) Procedure::$durations;
+        return inertia("Project/Procedures/Edit", [
+            'procedure' => $procedure,
+            'durations' => $durations
         ]);
     }
 

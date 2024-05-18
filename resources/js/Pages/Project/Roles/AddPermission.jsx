@@ -55,7 +55,7 @@ export default function AddPermission({
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className=" dark:bg-gray-800 overflow-hidden sm:rounded-lg">
-            <div className="p-6 text-gray-900 dark:text-gray-100">
+            <div className="p-1 text-gray-900 dark:text-gray-100">
               <div className="overflow-auto">
                 <div className="p-4">
                   <form onSubmit={onSubmit}>
