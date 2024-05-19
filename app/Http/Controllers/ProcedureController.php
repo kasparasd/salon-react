@@ -76,7 +76,7 @@ class ProcedureController extends Controller
         ]);
 
         $procedure->update($request->all());
-        return redirect()->route('procedures-index')->with('info', 'Proceduros pavadinimas atnaujintas');
+        return to_route('procedures.index')->with('info', 'Proceduros pavadinimas atnaujintas');
     }
 
     /**
@@ -93,7 +93,7 @@ class ProcedureController extends Controller
         $usersAssignedToProcedure = $procedure->users->pluck('id')->toArray();
         $users = User::all();
 
-        return view('procedures.addEmployee', [
+        return inertia('Project/Procedures/AddEmployees', [
             'users' => $users,
             'procedure' => $procedure,
             'usersAssignedToProcedure' => $usersAssignedToProcedure
@@ -101,10 +101,11 @@ class ProcedureController extends Controller
     }
     public function employeeToProcedure(Request $request, $procedureId)
     {
+        dd($request->all());
         $procedure = Procedure::findOrFail($procedureId);
         $users = $request->users;
         $procedure->users()->sync($users);
 
-        return redirect()->route('procedures-index')->with('ok', 'Darbuotojai prideti prie proceduros');
+        return to_route('procedures.index')->with('ok', 'Darbuotojai prideti prie proceduros');
     }
 }
