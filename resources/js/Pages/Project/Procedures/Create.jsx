@@ -44,7 +44,7 @@ export default function Create({ auth, durations, ok }) {
         >
          <div class="mb-5">
           <label
-           for="name"
+           htmlForfor="name"
            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
            Procedūros pavadinimas
@@ -57,7 +57,7 @@ export default function Create({ auth, durations, ok }) {
           />
 
           <label
-           for="duration"
+           htmlForfor="duration"
            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
            procedūros trukme

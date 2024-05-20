@@ -1,11 +1,8 @@
-import { AddButton } from "@/Components/buttons/AddButton";
-import { AddButtonBig } from "@/Components/buttons/AddButtonBig";
+import Checkbox from "@/Components/Checkbox";
 import { DeleteButton } from "@/Components/buttons/DeleteButton";
-import { EditButton } from "@/Components/buttons/EditButton";
 import { SubmitButton } from "@/Components/buttons/SubmitButton";
 import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
-import { Head, router, useForm } from "@inertiajs/react";
-import { useState } from "react";
+import { Head, useForm } from "@inertiajs/react";
 
 export default function AddEmployees({
  auth,
@@ -14,12 +11,12 @@ export default function AddEmployees({
  usersAssignedToProcedure,
  ok,
 }) {
- const { data, setData, post, errors, reset } = useForm({
+ const { data, setData, post } = useForm({
   users: usersAssignedToProcedure,
  });
 
  const handleAssignUserToProcedure = (user) => {
-  if (data.users.includes(user)) {
+  if (data.users.includes(user.id)) {
    setData(
     "users",
     data.users.filter((u) => u !== user.id)
@@ -66,11 +63,9 @@ export default function AddEmployees({
           {users.map((user) => (
            <div key={user.id}>
             <label className="inline-flex items-center">
-             <input
-             {...data.users.includes(user.id) ? { checked: true } : null}
-              type="checkbox"
-              name="users[]"
-              className="form-checkbox h-5 w-5 text-blue-600"
+             <Checkbox
+              checked={data.users.includes(user.id)}
+              value={user.id}
               onChange={() => handleAssignUserToProcedure(user)}
              />
              <span className="ml-2">{user.name}</span>
@@ -78,18 +73,7 @@ export default function AddEmployees({
            </div>
           ))}
 
-          <button
-           type="submit"
-           className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800"
-          >
-           Prideti
-          </button>
-          <a
-           href="{{route('procedures-index')}}"
-           className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800"
-          >
-           Atšaukti
-          </a>
+          <SubmitButton text="Priskirti" />
          </div>
         </form>
        </div>

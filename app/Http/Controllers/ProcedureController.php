@@ -85,7 +85,7 @@ class ProcedureController extends Controller
     public function destroy(Procedure $procedure)
     {
         $procedure->delete();
-        return redirect()->route('procedures-index')->with('info', 'Procedura istrinta');
+        return to_route('procedures.index')->with('info', 'Procedura istrinta');
     }
     public function addEmployees(Procedure $procedure)
     {
@@ -101,7 +101,7 @@ class ProcedureController extends Controller
     }
     public function employeeToProcedure(Request $request, $procedureId)
     {
-        dd($request->all());
+        // dd($request->all());
         $procedure = Procedure::findOrFail($procedureId);
         $users = $request->users;
         $procedure->users()->sync($users);

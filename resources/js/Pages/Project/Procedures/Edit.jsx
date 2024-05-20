@@ -40,37 +40,37 @@ export default function Create({ auth, durations, ok, procedure }) {
           e.preventDefault();
           put(route("procedures.update", procedure));
          }}
-         class="w-full max-w-lg"
+         className="w-full max-w-lg"
         >
-         <div class="mb-5">
+         <div className="mb-5">
           <label
-           for="name"
-           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+           htmlFor="name"
+           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
            Procedūros pavadinimas
           </label>
           <input
            type="text"
            name="name"
-           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
            onChange={(e) => setData("name", e.target.value)}
            value={data.name}
           />
 
           <label
-           for="duration"
-           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+           htmlFor="duration"
+           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
            procedūros trukme
           </label>
           <select
            onChange={(e) => setData("duration", e.target.value)}
            name="duration"
-           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
            <option value="0">Pasirinkite proceduros trukme (valandomis)</option>
            {Object.keys(durations).map((key) => (
-            <option value={key} selected = {procedure.duration == key ? "true" : ""}>{durations[key]}</option>
+            <option key={key} value={key} selected = {procedure.duration == key}>{durations[key]}</option>
            ))}
           </select>
            
