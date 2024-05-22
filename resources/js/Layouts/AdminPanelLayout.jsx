@@ -16,7 +16,7 @@ export default function AdminPanelLayout({ auth, children, user, header }) {
     <button
      onClick={toggleSidebar}
      type="button"
-     className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+     className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     >
      <svg
       className="w-6 h-6"
@@ -37,7 +37,7 @@ export default function AdminPanelLayout({ auth, children, user, header }) {
    <div className="flex h-screen bg-white">
     <aside
      id="logo-sidebar"
-     className={`fixed left-0 top-0 z-40 h-full transition-transform duration-300 sm:relative sm:translate-x-0 ${
+     className={`fixed left-0 top-0 z-40 h-full transition-transform duration-300 lg:relative lg:translate-x-0 ${
       isSidebarOpen ? "translate-x-0 w-64" : "-translate-x-full w-64"
      } bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700`}
      aria-label="Sidebar"
@@ -46,7 +46,7 @@ export default function AdminPanelLayout({ auth, children, user, header }) {
       <button
        onClick={toggleSidebar}
        type="button"
-       className="absolute top-2 right-2 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+       className="absolute top-2 right-2 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       >
        <span className="sr-only">Close sidebar</span>
        <svg

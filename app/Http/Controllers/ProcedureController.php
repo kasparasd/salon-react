@@ -19,7 +19,7 @@ class ProcedureController extends Controller
     {
         $procedures = Procedure::all();
         
-        return inertia("Project/Procedures/Index", [
+        return inertia("Procedures/Index", [
             "procedures" => $procedures
         ]);
     }
@@ -31,7 +31,7 @@ class ProcedureController extends Controller
     {
         $durations = (array) Procedure::$durations;
         // dd($durations); 
-        return inertia("Project/Procedures/Create", [
+        return inertia("Procedures/Create", [
             'durations' => $durations
         ]);
     }
@@ -60,7 +60,7 @@ class ProcedureController extends Controller
     public function edit(Procedure $procedure)
     {
         $durations = (array) Procedure::$durations;
-        return inertia("Project/Procedures/Edit", [
+        return inertia("Procedures/Edit", [
             'procedure' => $procedure,
             'durations' => $durations
         ]);
@@ -93,7 +93,7 @@ class ProcedureController extends Controller
         $usersAssignedToProcedure = $procedure->users->pluck('id')->toArray();
         $users = User::all();
 
-        return inertia('Project/Procedures/AddEmployees', [
+        return inertia('Procedures/AddEmployees', [
             'users' => $users,
             'procedure' => $procedure,
             'usersAssignedToProcedure' => $usersAssignedToProcedure

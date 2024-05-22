@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -44,5 +45,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // User.php
+    public function procedures()
+    {
+        return $this->belongsToMany(Procedure::class, 'procedure_has_users', 'user_id', 'procedure_id');
     }
 }

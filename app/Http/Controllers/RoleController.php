@@ -32,14 +32,14 @@ class RoleController extends Controller implements HasMiddleware
     {
         $roles = Role::get();
    
-        return inertia("Project/Roles/Index", [
+        return inertia("Roles/Index", [
             'roles'=>RoleResource::collection($roles),
             'ok'=>session('ok'),
         ]);
     }
     public function create()
     {
-        return inertia('Project/Roles/Create');
+        return inertia('Roles/Create');
     }
     public function store(Request $request)
     {
@@ -58,7 +58,7 @@ class RoleController extends Controller implements HasMiddleware
     }
     public function edit(Role $role)
     {
-        return inertia('Project/Roles/Edit', [
+        return inertia('Roles/Edit', [
             'role' => $role
         ]);
     }
@@ -94,7 +94,7 @@ class RoleController extends Controller implements HasMiddleware
 
         
         
-        return inertia("Project/Roles/AddPermission", [
+        return inertia("Roles/AddPermission", [
             'role' => $role,
             'permissions' => PermissionResource::collection($permissions),
             'rolePermissions' => $rolePermissions,

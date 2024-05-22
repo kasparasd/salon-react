@@ -1,11 +1,10 @@
 import { AddButton } from "@/Components/buttons/AddButton";
 import { AddButtonBig } from "@/Components/buttons/AddButtonBig";
-import { DeleteButton } from "@/Components/buttons/DeleteButton";
 import { EditButton } from "@/Components/buttons/EditButton";
 import AdminPanelLayout from "@/Layouts/AdminPanelLayout";
 import { Head, router } from "@inertiajs/react";
 
-export default function Index({ auth, roles, ok }) {
+export default function Index({ auth, roles, user, ok }) {
   const deleteRole = (roleId) => {
     if (!window.confirm("Are you sure you want to delete this role?")) {
       return;
