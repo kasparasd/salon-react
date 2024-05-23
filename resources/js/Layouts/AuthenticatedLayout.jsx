@@ -28,6 +28,12 @@ export default function AuthenticatedLayout({ user, header, children }) {
         >
          Dashboard
         </NavLink>
+        <NavLink
+         href={route("procedures.register")}
+         active={route().current("procedures.register")}
+        >
+         Registruotis procedūrai
+        </NavLink>
        </div>
       </div>
 
@@ -113,6 +119,12 @@ export default function AuthenticatedLayout({ user, header, children }) {
        active={route().current("dashboard")}
       >
        Dashboard
+      </ResponsiveNavLink>
+      <ResponsiveNavLink
+       href={route("procedures.register")}
+       active={route().current("procedures.register")}
+      >
+       Registruotis procedūrai
       </ResponsiveNavLink>
      </div>
 

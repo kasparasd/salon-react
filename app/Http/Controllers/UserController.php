@@ -41,7 +41,7 @@ class UserController extends Controller implements HasMiddleware
 
     public function create()
     {
-        $roles = Role::pluck('name', 'name')->all();
+        $roles = Role::pluck('name')->all();
         return inertia('Users/Create', [
             'roles' => $roles,
         ]);
@@ -49,6 +49,7 @@ class UserController extends Controller implements HasMiddleware
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
@@ -62,7 +63,7 @@ class UserController extends Controller implements HasMiddleware
 
         $user->syncRoles($request->roles);
 
-        return redirect('/users')->with('ok', 'Vartotojas sekmingai sukurtas');
+        return to_route('user.index')->with('ok', 'Vartotojas sekmingai sukurtas');
     }
 
     public function edit(User $user)
@@ -102,6 +103,6 @@ class UserController extends Controller implements HasMiddleware
     {
 
         User::findOrFail($userId)->delete();
-        return redirect('users')->with('ok', 'Vartotojas istrintas');
+        return to_route('user.index')->with('ok', 'Vartotojas istrintas');
     }
 }

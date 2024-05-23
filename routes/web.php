@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterToProcedureController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -29,7 +30,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
     Route::resource('user', UserController::class);
 
-
+    Route::get('registerToProcedure', [RegisterToProcedureController::class, 'registerToProcedure'])->name('procedures.register');
+    Route::get('{procedure}/registerToProcedure2', [RegisterToProcedureController::class, 'registerToProcedure2'])->name('procedures.register-2');
+    Route::get('{procedure}/{employee}/registerToProcedure3', [RegisterToProcedureController::class, 'registerToProcedure3'])->name('procedures.register-3');
+    Route::get('{procedure}/{employee}/registerToProcedure4', [RegisterToProcedureController::class, 'registerToProcedure4'])->name('procedures.register-4');
+    Route::post('{procedure}/{employee}/registerToProcedure5', [RegisterToProcedureController::class, 'registerToProcedure5'])->name('procedures.register-5');
+    Route::get('/get-occupied-times', [RegisterToProcedureController::class, 'procedures.getOccupiedTimes']);
+    Route::get('/procedure-schedule', [RegisterToProcedureController::class, 'showProcedureSchedule'])->name('procedures.schedule');
+    Route::get('/previous-procedure-schedule', [RegisterToProcedureController::class, 'showPreviousProcedureSchedule'])->name('procedures.previous-procedures-schedule');
 });
 Route::prefix("procedures")->name('procedures.')->group(function () {
     Route::get('/', [ProcedureController::class, 'index'])->name('index');
@@ -42,6 +50,7 @@ Route::prefix("procedures")->name('procedures.')->group(function () {
     Route::get('/{procedure}/add-employees', [ProcedureController::class, 'addEmployees'])->name('add-employees');
     Route::post('/{procedure}/employeeToProcedure', [ProcedureController::class, 'employeeToProcedure'])->name('employee-to-procedure');
 });
+
 
 
 Route::middleware('auth')->group(function () {
