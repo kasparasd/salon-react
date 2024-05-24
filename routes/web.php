@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('{procedure}/{employee}/registerToProcedure3', [RegisterToProcedureController::class, 'registerToProcedure3'])->name('procedures.register-3');
     Route::get('{procedure}/{employee}/registerToProcedure4', [RegisterToProcedureController::class, 'registerToProcedure4'])->name('procedures.register-4');
     Route::post('{procedure}/{employee}/registerToProcedure5', [RegisterToProcedureController::class, 'registerToProcedure5'])->name('procedures.register-5');
-    Route::get('/get-occupied-times', [RegisterToProcedureController::class, 'procedures.getOccupiedTimes']);
+    Route::get('/get-occupied-times', [RegisterToProcedureController::class, 'getOccupiedTimes']);
     Route::get('/procedure-schedule', [RegisterToProcedureController::class, 'showProcedureSchedule'])->name('procedures.schedule');
     Route::get('/previous-procedure-schedule', [RegisterToProcedureController::class, 'showPreviousProcedureSchedule'])->name('procedures.previous-procedures-schedule');
 });

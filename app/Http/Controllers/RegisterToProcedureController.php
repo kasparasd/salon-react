@@ -103,7 +103,7 @@ class RegisterToProcedureController extends Controller
     }
     public function registerToProcedure4(Request $request, Procedure $procedure, User $employee)
     {
-        return view('procedures.registerToProcedure4', [
+        return inertia('Procedures/RegisterToProcedure4', [
             'procedure' => $procedure,
             'employee' => $employee,
             'date' => $request->date,
@@ -196,7 +196,6 @@ class RegisterToProcedureController extends Controller
                 }
             }
         }
-
 
         return $times;
     }
