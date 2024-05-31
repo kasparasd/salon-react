@@ -31,6 +31,7 @@ export default function Users({ auth, ok, user, roles, userRoles }) {
 
  return (
   <AdminPanelLayout
+  ok={ok}
    user={auth.user}
    header={
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -45,16 +46,7 @@ export default function Users({ auth, ok, user, roles, userRoles }) {
   >
    <Head title="Profile" />
 
-   <div className="py-12">
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-     {ok && (
-      <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
-       {ok}
-      </div>
-     )}
-     <div className="dark:bg-gray-800 overflow-hidden sm:rounded-lg">
-      <div className="p-6 text-gray-900 dark:text-gray-100">
-       <div className="overflow-auto">
+
         <form onSubmit={onSubmit}>
          <div className="mb-3">
           <label htmlFor="name" className="block">
@@ -115,11 +107,7 @@ export default function Users({ auth, ok, user, roles, userRoles }) {
           </button>
          </div>
         </form>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
+
   </AdminPanelLayout>
  );
 }

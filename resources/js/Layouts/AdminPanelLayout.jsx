@@ -2,7 +2,7 @@ import { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function AdminPanelLayout({ auth, children, user, header }) {
+export default function AdminPanelLayout({ auth, children, user, header, ok }) {
  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
  const toggleSidebar = () => {
@@ -96,7 +96,20 @@ export default function AdminPanelLayout({ auth, children, user, header }) {
        </div>
       </header>
      )}
-     {children}
+     <div className="py-12">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+       {ok && (
+        <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
+         {ok}
+        </div>
+       )}
+       <div className="dark:bg-gray-800 overflow-hidden sm:rounded-lg">
+        <div className="p-6 text-gray-900 dark:text-gray-100">
+         <div className="overflow-auto">{children}</div>
+        </div>
+       </div>
+      </div>
+     </div>
     </main>
    </div>
   </AuthenticatedLayout>

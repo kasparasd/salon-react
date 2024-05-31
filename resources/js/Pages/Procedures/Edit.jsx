@@ -25,63 +25,49 @@ export default function Create({ auth, durations, ok, procedure }) {
    }
   >
    <Head title="Roles" />
-   <div className="py-12">
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-     {ok && (
-      <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
-       {ok}
-      </div>
-     )}
-     <div className="dark:bg-gray-800 overflow-hidden sm:rounded-lg">
-      <div className="p-1 text-gray-900 dark:text-gray-100">
-       <div className="overflow-auto">
-        <form
-         onSubmit={(e) => {
-          e.preventDefault();
-          put(route("procedures.update", procedure));
-         }}
-         className="w-full max-w-lg"
-        >
-         <div className="mb-5">
-          <label
-           htmlFor="name"
-           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-           Procedūros pavadinimas
-          </label>
-          <input
-           type="text"
-           name="name"
-           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-           onChange={(e) => setData("name", e.target.value)}
-           value={data.name}
-          />
+   <form
+    onSubmit={(e) => {
+     e.preventDefault();
+     put(route("procedures.update", procedure));
+    }}
+    className="w-full max-w-lg"
+   >
+    <div className="mb-5">
+     <label
+      htmlFor="name"
+      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+     >
+      Procedūros pavadinimas
+     </label>
+     <input
+      type="text"
+      name="name"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      onChange={(e) => setData("name", e.target.value)}
+      value={data.name}
+     />
 
-          <label
-           htmlFor="duration"
-           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-           procedūros trukme
-          </label>
-          <select
-           onChange={(e) => setData("duration", e.target.value)}
-           name="duration"
-           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-           <option value="0">Pasirinkite proceduros trukme (valandomis)</option>
-           {Object.keys(durations).map((key) => (
-            <option key={key} value={key} selected = {procedure.duration == key}>{durations[key]}</option>
-           ))}
-          </select>
-           
-         </div>
-         <SubmitButton text="Sukurti" />
-        </form>
-       </div>
-      </div>
-     </div>
+     <label
+      htmlFor="duration"
+      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+     >
+      procedūros trukme
+     </label>
+     <select
+      onChange={(e) => setData("duration", e.target.value)}
+      name="duration"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+     >
+      <option value="0">Pasirinkite proceduros trukme (valandomis)</option>
+      {Object.keys(durations).map((key) => (
+       <option key={key} value={key} selected={procedure.duration == key}>
+        {durations[key]}
+       </option>
+      ))}
+     </select>
     </div>
-   </div>
+    <SubmitButton text="Sukurti" />
+   </form>
   </AdminPanelLayout>
  );
 }

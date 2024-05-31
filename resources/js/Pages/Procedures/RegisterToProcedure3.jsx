@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-export default function RegisterToProcedure2({
- auth,
- procedure,
- employee,
- times,
-}) {
+export default function RegisterToProcedure2({ auth, procedure, employee }) {
  useEffect(() => {
   const link = document.createElement("link");
   link.rel = "stylesheet";
@@ -27,6 +22,8 @@ export default function RegisterToProcedure2({
    document.body.removeChild(script);
   };
  }, []);
+
+
 
  const initializeFlatpickr = () => {
   const slotsDOM = document.querySelector("#timeSlots");
